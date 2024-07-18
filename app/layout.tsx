@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import TopHeader from "@/components/TopHeader";
+import BetSlip from "@/components/betslip/BetSlip";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} min-h-screen bg-gray-100 pb-4`}>
+        <TopHeader />
+        <section className="grid grid-cols-5 relative px-32">
+          <main className="col-span-4">{children}</main>
+          <BetSlip />
+        </section>
+      </body>
     </html>
   );
 }
